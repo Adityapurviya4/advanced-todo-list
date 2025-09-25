@@ -22,7 +22,7 @@ A feature-rich, responsive To-Do List web application built with **HTML**, **CSS
 
 ## 🌐 Live Demo
 
-[🔗 View the live app](https://your-username.github.io/your-repo-name/)
+[🔗 View the live app]((https://github.com/Adityapurviya4/advanced-todo-list))
 
 ## 📄 License
 
