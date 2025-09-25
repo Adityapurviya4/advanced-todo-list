@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgb(3, 4, 94), #023e8a);
+  padding: 10px;
+  transition: background 0.5s ease;
+}
+
+.todo-app {
+  width: 100%;
+  max-height: 540px;
+  overflow-y: auto;
+  background: white;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  border-radius: 10px;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.todo-app h2 {
+  color: #03045e;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.todo-app h2 img {
+  width: 35px;
+  margin-left: 10px;
+}
+
+#dark-mode-toggle {
+  background: #023e8a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+  background-color: #0353a4;
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.7);
+}
+
+body.dark-mode .container {
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+}
+
+body.dark-mode .todo-app {
+  background-color: #222;
+  color: #eee;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .todo-app h2 {
+  color: #90e0ef;
+}
+
+body.dark-mode .row {
+  background: #333;
+}
+
+body.dark-mode input,
+body.dark-mode #repeat-select {
+  background: #444;
+  color: #eee;
+  border: 1px solid #555;
+}
+
+body.dark-mode input[type="text"] {
+  background: transparent;
+  color: #eee;
+  border: none;
+}
+
+body.dark-mode button {
+  background: #0077b6;
+  color: #eee;
+  box-shadow: none;
+}
+
+body.dark-mode button:hover {
+  background-color: #0096c7;
+  box-shadow: 0 0 10px rgba(0, 150, 199, 0.7);
+}
+
+body.dark-mode .delete-list-btn {
+  background: #d62828;
+}
+
+body.dark-mode .delete-list-btn:hover {
+  background-color: #f94144;
+}
+
+body.dark-mode .clean-all-btn {
+  background: #b00020;
+}
+
+body.dark-mode .clean-all-btn:hover {
+  background-color: #e63946;
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.9);
+}
+
+body.dark-mode ul li {
+  color: #ccc;
+}
+
+body.dark-mode ul li.checked {
+  color: #777;
+  text-decoration: line-through;
+}
+
+body.dark-mode ul li span.important-btn {
+  color: #90e0ef;
+}
+
+body.dark-mode ul li span.important-btn.important {
+  color: #00b4d8;
+}
+
+body.dark-mode ul li span:last-child {
+  color: #bbb;
+}
+
+body.dark-mode .due-time {
+  color: #bbb;
+}
+
+body.dark-mode .overdue {
+  color: #f94144;
+  font-weight: bold;
+}
+
+body.dark-mode .repeat-indicator {
+  color: #90e0ef;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  background: #edeef0;
+  border-radius: 30px;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+input,
+#repeat-select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+  background: #f1f1f1;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="text"] {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 15px;
+  cursor: auto;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 16px 30px;
+  background: #023e8a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 40px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #0353a4;
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.7);
+}
+
+ul li {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  border-radius: 50px;
+  background-image: url(assets/unchecked.png);
+  background-size: cover;
+  background-position: center;
+  top: 12px;
+  left: 8px;
+}
+
+ul li.checked {
+  color: #555;
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  background-image: url(assets/checked.png);
+}
+
+ul li span {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+ul li .important-btn {
+  right: 50px;
+  color: gray;
+  transition: color 0.3s;
+}
+
+ul li .important-btn.important {
+  color: #023e8a;
+}
+
+ul li .important-btn:hover {
+  background: #edeeed;
+}
+
+ul li span:last-child {
+  right: 0;
+  color: #696969;
+}
+
+.status {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-section {
+  margin-top: 20px;
+}
+
+ul {
+  transition: all 0.3s ease;
+}
+
+ul.collapsed {
+  display: none;
+}
+
+.completed-time,
+.due-time {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+  padding-left: 0px;
+}
+
+.overdue {
+  color: red;
+  font-weight: bold;
+}
+
+.repeat-indicator {
+  font-size: 12px;
+  color: #023e8a;
+  margin-left: 8px;
+  text-transform: capitalize;
+  font-style: italic;
+  top: 24px;
+}
+
+.repeat-daily .repeat-indicator {
+  color: #2d6a4f;
+}
+
+.repeat-weekly .repeat-indicator {
+  color: #1e6091;
+}
+
+.repeat-monthly .repeat-indicator {
+  color: #9b2226;
+}
+
+.clean-all-btn {
+  background: red;
+  color: white;
+}
+
+.clean-all-btn:hover {
+  background-color: darkred;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
+
+.list-control {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#new-list-name {
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  flex-grow: 1;
+  min-width: 150px;
+  transition: border-color 0.3s ease;
+}
+
+#new-list-name:focus {
+  border-color: #023e8a;
+  outline: none;
+}
+#list-selector {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 20px;
+  background-color: #023e8a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  min-width: 50px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#list-selector:hover,
+#list-selector:focus {
+  background-color: #0077b6;
+  outline: none;
+  box-shadow: 0 0 10px rgba(3, 62, 138, 0.7);
+}
+
+#list-selector option:checked {
+  background-color: #90e0ef;
+  color: #023e8a;
+  font-weight: bold;
+}
+
+.delete-list-btn {
+  background: #e63946;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.delete-list-btn:hover {
+  background-color: #d62828;
+  box-shadow: 0 0 8px rgba(230, 57, 70, 0.7);
+}
+
+button:disabled,
+#list-selector:disabled {
+  background-color: #cccccc;
+  color: #777777;
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="todo-app">
+      <h2><img src="assets/icon.png" alt="icon">To-Do List</h2>
+      <button id="dark-mode-toggle" class="dark-mode-toggle">🌙 Dark Mode</button>
+
+      <div class="list-control">
+        <input type="text" id="new-list-name" placeholder="Enter list name" />
+        <button onclick="createNewList()">+ New List</button>
+        <select id="list-selector" onchange="switchList(this.value)"></select>
+        <button onclick="deleteCurrentList()" class="delete-list-btn">🗑️ Delete List</button>
+      </div>
+
+      <div class="row">
+        <input type="text" id="input-box" placeholder="Add your tasks" />
+        <input type="datetime-local" id="due-date" />
+        <select id="repeat-select">
+          <option value="none">No Repeat</option>
+          <option value="daily">Repeat Daily</option>
+          <option value="weekly">Repeat Weekly</option>
+          <option value="monthly">Repeat Monthly</option>
+        </select>
+        <button onclick="addTask()">Add</button>
+      </div>
+
+      <div class="task-section">
+        <button class="toggle-btn" id="active-toggle" onclick="toggleSection('active')">
+          ↑ Active List (0)
+        </button>
+        <ul id="active-list"></ul>
+      </div>
+
+      <div class="task-section">
+        <button class="toggle-btn" id="completed-toggle" onclick="toggleSection('completed')">
+          ↑ Complete List (0)
+        </button>
+        <button class="clean-all-btn" onclick="cleanAllCompletes()">Clean All Completes</button>
+        <ul id="completed-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
