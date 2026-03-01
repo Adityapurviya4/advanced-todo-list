@@ -111,7 +111,8 @@ function updateUI() {
     }
 
     const li = document.createElement("li");
-    li.textContent = task.text;
+   li.textContent = task.text;
+   
 
     if (task.repeat === "daily") li.classList.add("repeat-daily");
     else if (task.repeat === "weekly") li.classList.add("repeat-weekly");
